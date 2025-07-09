@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Flow Digital</title>
+    
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Fonts and Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to your main stylesheet AND the dedicated account page stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="account-page.css">
+</head>
+<body>
+
+   <!-- ========================================================== -->
+<!--  MASTER HEADER - USE THIS ON ALL PAGES -->
+<!-- ========================================================== -->
+<header class="header">
+    <div class="container header-container">
+        <div class="header-left">
+            <a href="index.html" class="logo">Flow</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="#about">About</a>
+                <a href="admin/product-creator.html">Admin</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
+    <!-- The icon will be injected here by JavaScript -->
+</button>
+            
+            <!-- These are toggled by JavaScript -->
+            <div id="auth-buttons" class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+            </div>
+            <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
+            
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"></button>
+        </div>
+    </div>
+</header>
+
+<!-- ========================================================== -->
+<!--  MASTER MOBILE SIDE NAVIGATION - USE THIS ON ALL PAGES     -->
+<!-- ========================================================== -->
+<div id="mobile-nav" class="mobile-nav-overlay">
+    <button id="mobile-close-btn" class="mobile-close-btn">×</button>
+    <nav class="mobile-nav-links">
+        <a href="index.html" style="--stagger: 1;">Home</a>
+        <a href="products.html" style="--stagger: 2;">Products</a>
+        <a href="#about" style="--stagger: 3;">About</a>
+        <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 4;">
+            <a href="login.html" class="btn btn-secondary">Login</a>
+            <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+        </div>
+        <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 4;">
+             <a href="account.html" class="btn btn-primary">My Account</a>
+             <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+        </div>
+    </nav>
+</div>
+
+<!-- ========================================================== -->
+<!--  MASTER MOBILE BOTTOM NAVIGATION - USE THIS ON ALL PAGES   -->
+<!-- ========================================================== -->
+<nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-link" aria-label="Home">
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <span>Home</span>
+    </a>
+    <a href="products.html" class="bottom-nav-link" aria-label="Products">
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <span>Products</span>
+    </a>
+    <a href="#" class="bottom-nav-link" aria-label="Support">
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <span>Support</span>
+    </a>
+    <a href="account.html" class="bottom-nav-link active" aria-label="Profile"> <!-- Note the 'active' class -->
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <span>Profile</span>
+    </a>
+</nav>
+
+    <main class="account-main">
+        <div class="container">
+            <!-- Page Loader -->
+            <div id="page-loader" class="page-loader">
+                <div class="spinner"></div>
+                <p>Loading Your Account...</p>
+            </div>
+
+            <!-- Main Account Content (hidden until loaded) -->
+            <div id="account-content" class="dashboard-grid" style="display: none;">
+                
+                <!-- Left Column: User Profile Sidebar -->
+                <aside class="dashboard-sidebar">
+                    <div class="profile-card-v2">
+                        <div class="profile-avatar">
+                            <img id="user-avatar-img" src="assets/default-avatar.png" alt="User Avatar">
+                        </div>
+                        <h1 id="user-name">Loading...</h1>
+                        <p id="user-email">loading@email.com</p>
+                        <button id="sidebar-logout-btn" class="btn btn-secondary btn-full">Logout</button>
+                    </div>
+                </aside>
+
+                <!-- Right Column: Main Content -->
+                <div class="dashboard-main-content">
+                    <!-- Section 1: My Downloads -->
+                    <section id="downloads-section" class="dashboard-section">
+                        <h2 class="section-title">My Downloads</h2>
+                        <div id="orders-grid" class="orders-grid">
+                            <p>You have no purchased products yet.</p>
+                        </div>
+                    </section>
+
+                    <!-- Section 2: Account Settings -->
+                    <section id="settings-section" class="dashboard-section">
+                        <h2 class="section-title">Account Settings</h2>
+                        <div class="settings-card">
+                             <form id="settings-form">
+                                <div class="settings-grid">
+                                    <div class="input-group">
+                                        <label for="setting-name">Full Name</label>
+                                        <input type="text" id="setting-name" placeholder="John Doe">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="setting-email">Email Address</label>
+                                        <input type="email" id="setting-email" disabled>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="setting-password">New Password</label>
+                                        <input type="password" id="setting-password" placeholder="Leave blank to keep current">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                                <p id="update-success-message" class="success-message" style="display:none;">Profile updated successfully!</p>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="data.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>

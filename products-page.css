@@ -1,0 +1,133 @@
+/*
+=====================================================
+  STYLES FOR THE NEW PRODUCTS MARKETPLACE PAGE
+=====================================================
+*/
+
+.products-page-main {
+    padding: 2rem 0;
+}
+
+.marketplace-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.marketplace-header h1 {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    font-weight: 800;
+}
+
+.marketplace-header p {
+    font-size: clamp(1rem, 4vw, 1.1rem);
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0.5rem auto 0;
+}
+
+/* --- Filter Panel --- */
+.filter-panel {
+    background-color: var(--surface-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: all var(--transition-speed);
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
+}
+
+/* Category Filter Buttons */
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.category-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.category-btn:hover {
+    background-color: var(--secondary-hover);
+    border-color: var(--text-secondary);
+}
+
+.category-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Product Grid on this page */
+.products-page-main .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0; /* Remove padding from grid itself */
+}
+
+.no-results {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-secondary);
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+    .filter-panel {
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        align-items: flex-end;
+    }
+
+    .products-page-main .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .products-page-main .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+

@@ -1,0 +1,366 @@
+/*
+=================================================================
+  FLOW DIGITAL - V14 - FINAL VERSION WITH PERFECTED DESKTOP HEADER
+  (This version has been enhanced with new sections and cards)
+=================================================================
+*/
+
+/* --- 1. Variables, Globals & Animations --- */
+:root {
+    --bg-color: #0B1120; --surface-color: #111827; --text-primary: #f9fafb; --text-secondary: #9ca3af; --border-color: #374151; --primary-color: #4361EE; --primary-hover: #5470f1; --secondary-color: #1F2937; --secondary-hover: #374151; --shadow-glow: 0 0 30px -5px color-mix(in srgb, var(--primary-color) 40%, transparent); --border-radius: 0.75rem; --border-radius-lg: 0.75rem; --transition-speed: 0.2s; --font-family: 'Inter', sans-serif;
+}
+[data-theme="light"] {
+    --bg-color: #f9fafb; --surface-color: #ffffff; --text-primary: #111827; --text-secondary: #6b7280; --border-color: #e5e7eb; --primary-color: #4f46e5; --primary-hover: #4338ca; --secondary-color: #f3f4f6; --secondary-hover: #e5e7eb;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-family); background-color: var(--bg-color); color: var(--text-primary); padding-bottom: 70px; }
+.container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes aurora { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/*
+=====================================================
+  2. HEADER & NAVIGATION (NEW & IMPROVED)
+=====================================================
+*/
+/* --- Mobile Header --- */
+.header { background-color: color-mix(in srgb, var(--bg-color) 85%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 50; }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--text-primary); }
+.header-left, .header-right { display: flex; align-items: center; gap: 0.5rem; }
+.main-nav, .header .auth-buttons, .header #account-link.btn-primary { display: none; } /* Hide desktop elements */
+.theme-toggle, .mobile-menu-btn { background: none; border: none; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; }
+
+/* --- Mobile Navigations --- */
+.mobile-nav-overlay { position: fixed; top: 0; left: 0; z-index: 100; width: 100%; height: 100%; background-color: var(--bg-color); transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1); transform: translateX(-100%); display: flex; }
+.mobile-nav-overlay.open { transform: translateX(0); }
+.mobile-nav-links a { font-size: 2rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+.bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background-color: var(--surface-color); border-top: 1px solid var(--border-color); display: flex; justify-content: space-around; padding: 0.5rem 0; z-index: 49; }
+.bottom-nav-link { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; }
+.bottom-nav-link.active { color: var(--primary-color); }
+.icon-24 { width: 24px; height: 24px; }
+
+/* --- 3. Buttons --- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem; padding: 0.75rem 1.25rem; border-radius: 999px; text-decoration: none; font-weight: 600; transition: all var(--transition-speed) ease; border: 1px solid transparent; cursor: pointer; font-size: 0.9rem; }
+.btn-primary { background-color: var(--primary-color); color: white; margin: 10px; }
+.btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+.btn-secondary { background-color: var(--secondary-color); color: var(--text-primary); border-color: var(--border-color); margin: 15px; }
+
+/* --- 4. Homepage Content --- */
+.hero { text-align: center; padding: 4rem 0 5rem; position: relative; overflow: hidden; }
+.hero-content { position: relative; z-index: 1; }
+.hero-title { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin: 1.5rem 0; }
+.hero-title span { color: var(--primary-color); }
+.hero-subtitle { font-size: clamp(1.1rem, 4vw, 1.25rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 2.5rem; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 { font-size: clamp(2rem, 8vw, 2.5rem); }
+.footer { padding: 4rem 0 2rem; background-color: var(--surface-color); border-top: 1px solid var(--border-color); }
+.footer-content { display: grid; grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+.footer-links h4 { margin-bottom: 1rem; }
+.footer-links a { color: var(--text-secondary); text-decoration: none; }
+.footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; }
+
+/*
+=====================================================
+  5. EXCEPTIONAL PRODUCT CARD & GRID STYLES (NEW)
+=====================================================
+*/
+.products-section {
+    padding: 4rem 1rem;
+    position: relative;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+.product-card {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+.product-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+.product-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: var(--border-radius-lg);
+    border: 2px solid transparent;
+    background: linear-gradient(120deg, var(--primary-color), #8b5cf6, #ec4899) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.product-card:hover::before { opacity: 1; }
+.product-card-content {
+    position: relative; z-index: 1;
+    background: color-mix(in srgb, var(--surface-color) 80%, transparent);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-radius: calc(var(--border-radius-lg) - 2px);
+    display: flex; flex-direction: column; height: 100%; overflow: hidden;
+}
+.product-image-link { display: block; position: relative; }
+.product-image { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform 0.4s ease; }
+.product-card:hover .product-image { transform: scale(1.05); }
+.product-badge { position: absolute; top: 1rem; left: 1rem; background-color: color-mix(in srgb, var(--bg-color) 70%, transparent); backdrop-filter: blur(5px); padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; z-index: 2; border: 1px solid var(--border-color); }
+.product-info { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
+.product-title a { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); text-decoration: none; transition: color var(--transition-speed); }
+.product-title a:hover { color: var(--primary-color); }
+.product-description { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0.5rem 0 1.5rem; flex-grow: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.product-price { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+.btn-buy { background-color: var(--secondary-hover); color: var(--text-primary); padding: 0.6rem 1.2rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all var(--transition-speed); }
+.product-card:hover .btn-buy { background-color: var(--primary-color); color: white; }
+
+/*
+=====================================================
+  6. PERFECTED FEATURE SECTION STYLES (NEW)
+=====================================================
+*/
+.feature-section {
+    padding: 4rem 1rem;
+    background-color: var(--surface-color);
+}
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    text-align: left;
+}
+.feature-icon {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background-color: var(--secondary-hover);
+    color: var(--primary-color);
+}
+.feature-icon svg { width: 24px; height: 24px; }
+.feature-text h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+.feature-text p { color: var(--text-secondary); line-height: 1.6; }
+
+/*
+=====================================================
+  7. TRUSTED & SECURE PAYMENTS SECTION (NEW)
+=====================================================
+*/
+.payments-section { padding: 4rem 1rem; text-align: center; }
+.razorpay-card { background-color: white; color: #0d2344; border-radius: var(--border-radius-lg); padding: 2rem; max-width: 400px; margin: 2rem auto 3rem; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1); }
+.razorpay-logo { width: 150px; height: auto; margin: 0 auto 1.5rem; }
+.razorpay-text { font-weight: 500; margin-bottom: 1rem; }
+.payment-methods-img { width: 100%; max-width: 300px; margin: 0 auto; }
+@keyframes scroll-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logo-marquee { width: 100%; overflow: hidden; position: relative; -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); }
+.logo-track { display: flex; width: fit-content; animation: scroll-marquee 20s linear infinite; }
+.logo-track img { height: 32px; margin: 0 2rem; flex-shrink: 0; }
+
+/*
+=====================================================
+  8. DESKTOP DROPDOWN MENU (NEW)
+=====================================================
+*/
+.dropdown {
+    position: relative;
+    display: none; /* Hidden on mobile */
+}
+.dropdown-toggle {
+    background: none; border: none; font-family: inherit; font-size: inherit; font-weight: 500; color: var(--text-secondary); padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; transition: all var(--transition-speed); display: flex; align-items: center; gap: 0.25rem;
+}
+.dropdown-toggle:hover { background-color: var(--secondary-hover); color: var(--text-primary); }
+.dropdown-toggle::after { content: ''; display: inline-block; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 4px solid currentColor; margin-left: 0.25rem; }
+.dropdown-menu {
+    position: absolute; top: 100%; left: 0;
+    margin-top: 0.5rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 0.5rem; min-width: 200px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    z-index: 60;
+    opacity: 0; transform: translateY(10px); visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.dropdown:hover .dropdown-menu { opacity: 1; transform: translateY(0); visibility: visible; }
+.dropdown-menu a { display: block; padding: 0.75rem 1rem; color: var(--text-secondary); text-decoration: none; border-radius: var(--border-radius-md); transition: all var(--transition-speed); }
+.dropdown-menu a:hover { background-color: var(--primary-color); color: white; }
+
+
+/*
+=====================================================
+  9. DESKTOP RESPONSIVE BREAKPOINTS
+=====================================================
+*/
+@media (min-width: 992px) {
+    body { padding-bottom: 0; }
+    .bottom-nav { display: none; }
+    .header-container { justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 2.5rem; }
+    .main-nav { display: flex; gap: 0.5rem; align-items: center; }
+    .main-nav a { position: relative; padding: 0.5rem 1rem; border-radius: 0.5rem; text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: all var(--transition-speed); }
+    .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.25s ease-out; }
+    .main-nav a:hover { color: var(--text-primary); }
+    .main-nav a:hover::after { width: 60%; }
+    .dropdown { display: block; }
+    .mobile-menu-btn { display: none; }
+    .header .auth-buttons, .header #account-link { display: flex; gap: 0.75rem; }
+    .header-icon-link { display: none; }
+    .btn { width: auto; max-width: none; }
+    .hero-actions, .trust-badges { flex-direction: row; }
+    .product-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .feature-grid { grid-template-columns: repeat(3, 1fr); gap: 3rem 2.5rem; }
+    .footer-content { display: flex; justify-content: space-between; text-align: left; }
+    .footer-links-group { display: flex; gap: 4rem; }
+    .payments-section { padding: 5rem 2rem; }
+    .logo-track img { height: 40px; margin: 0 2.5rem; }
+}
+@media (min-width: 1200px) {
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/*
+=====================================================
+  STYLES FOR FULL-SCREEN SEARCH OVERLAY
+=====================================================
+*/
+
+/* --- Header Search Icon --- */
+
+
+/* --- Search Overlay --- */
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--bg-color) 85%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 110; /* Higher than header */
+    
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s 0.3s;
+}
+
+.search-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s 0s;
+}
+
+.search-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 3rem;
+    line-height: 1;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.search-modal {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 10vh;
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+.search-overlay.open .search-modal {
+    opacity: 1;
+}
+
+.search-input-overlay {
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 1rem 0;
+    outline: none;
+    text-align: center;
+    transition: border-color var(--transition-speed);
+}
+.search-input-overlay:focus {
+    border-bottom-color: var(--primary-color);
+}
+
+.search-results-grid {
+    margin-top: 2rem;
+    max-height: 60vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+/* We will reuse the .product-card style but simplify it for search results */
+.search-results-grid .product-card {
+    background: var(--surface-color);
+    border: 1px solid transparent;
+}
+.search-results-grid .product-card:hover {
+    border-color: var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: none;
+}
+.search-results-grid .product-image {
+    aspect-ratio: 1/1;
+}
+.search-results-grid .product-info {
+    padding: 0.75rem;
+}
+.search-results-grid .product-title {
+    font-size: 0.9rem;
+}
+.search-results-grid .product-footer {
+    display: none; /* Hide price and button in search results */
+}
+
+
+/*
+=====================================================
+  11. STYLES FOR HEADER ICON BUTTONS
+=====================================================
+*/
+
+.header-icon-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; /* Good size for touch targets */
+    height: 44px;
+    padding: 0;
+    border-radius: 50%;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.header-icon-btn:hover {
+    background-color: var(--secondary-hover);
+    color: var(--text-primary);
+}

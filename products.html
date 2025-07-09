@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Flow Digital</title>
+    <meta name="description" content="Browse our curated collection of high-quality digital assets.">
+    
+    <!-- Firebase Libraries (optional for this page, but good for consistency) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <!-- Fonts and Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products-page.css">
+</head>
+<body>
+
+    <!-- ========================================================== -->
+    <!--  1. PERFECTED HEADER (Identical to index.html)             -->
+    <!-- ========================================================== -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">Flow</a>
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="#about">About</a>
+                <a href="admin/product-creator.html">Admin</a>
+            </nav>
+            <div class="header-right">
+                <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
+    <!-- The icon will be injected here by JavaScript -->
+</button>
+                <div id="auth-buttons" class="auth-buttons">
+                    <a href="login.html" class="btn btn-secondary">Login</a>
+                    <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+                </div>
+                <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================================== -->
+    <!--  2. MOBILE SIDE NAVIGATION (Identical to index.html)     -->
+    <!-- ========================================================== -->
+    <div id="mobile-nav" class="mobile-nav-overlay">
+        <button id="mobile-close-btn" class="mobile-close-btn">×</button>
+        <nav class="mobile-nav-links">
+            <a href="index.html#products" style="--stagger: 1;">Products</a>
+            <a href="index.html#about" style="--stagger: 2;">About</a>
+            <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 3;">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 3;">
+                 <a href="account.html" class="btn btn-primary">My Account</a>
+                 <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="products-page-main">
+        <div class="container">
+            <div class="marketplace-header">
+                <h1>Digital Marketplace</h1>
+                <p>Browse our curated collection of eBooks, apps, tools, and templates.</p>
+            </div>
+
+            <div class="filter-panel">
+                <div class="filter-group search-filter">
+                    <label for="search-input">Search Products</label>
+                    <input type="search" id="search-input" placeholder="Search by name...">
+                </div>
+                <div class="filter-group">
+                    <label for="min-price">Min Price</label>
+                    <input type="number" id="min-price" placeholder="₹0">
+                </div>
+                <div class="filter-group">
+                    <label for="max-price">Max Price</label>
+                    <input type="number" id="max-price" placeholder="₹9999">
+                </div>
+                <div class="filter-group">
+                    <label for="sort-by">Sort By</label>
+                    <select id="sort-by">
+                        <option value="default">Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <!-- Categories will be added by JavaScript -->
+            </div>
+
+            <div id="product-grid" class="product-grid"></div>
+            <p id="no-results-message" class="no-results" style="display: none;">No products match your criteria.</p>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <!-- Your standard footer from index.html goes here -->
+    </footer>
+    
+    <!-- ========================================================== -->
+    <!--  3. MOBILE BOTTOM NAVIGATION (Identical to index.html)   -->
+    <!-- ========================================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-link" aria-label="Home">
+            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V19.5a.75.75 0 01-.75.75h-2.125A1.875 1.875 0 015 19.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path></svg>
+            <span>Home</span>
+        </a>
+        <a href="products.html" class="bottom-nav-link active" aria-label="Products">
+            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M10.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path><path fill-rule="evenodd" d="M4.125 3.375A.75.75 0 003 4.125v15.75A.75.75 0 004.125 21h15.75A.75.75 0 0021 19.875V4.125A.75.75 0 0019.875 3h-1.625a.75.75 0 010-1.5h1.625A2.25 2.25 0 0121 3.375v15.75A2.25 2.25 0 0118.625 21h-13.25A2.25 2.25 0 013 18.625V4.125A2.25 2.25 0 015.375 1.5h1.625a.75.75 0 010 1.5H5.375A.75.75 0 004.5 3.375h-.375z" clip-rule="evenodd"></path><path d="M13.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path></svg>
+            <span>Products</span>
+        </a>
+        <a href="#" class="bottom-nav-link" aria-label="Support">
+            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.75 15l.375-.375a.75.75 0 00-1.125 0L12 14.625l-.375.375a.75.75 0 001.125 0L12.75 15z"></path><path fill-rule="evenodd" d="M12 21a8.25 8.25 0 008.25-8.25c0-4.135-3.003-7.535-6.937-8.161a.75.75 0 00-.563.133c-.352.23-.523.668-.415 1.066A6.72 6.72 0 0112 5.25a6.75 6.75 0 014.163 11.53c.12.1.226.173.315.242a.75.75 0 00.978-1.123 8.22 8.22 0 00-2.212-2.428A6.75 6.75 0 0112 12.75a6.72 6.72 0 01-5.25-2.007.75.75 0 00-.415-1.066.75.75 0 00-.563-.133C1.753 10.215 1.5 11.006 1.5 12.75 1.5 17.513 5.237 21 9.75 21h.75a.75.75 0 00.75-.75V18a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v2.25a.75.75 0 00.75.75h.75z" clip-rule="evenodd"></path></svg>
+            <span>Support</span>
+        </a>
+        <a href="account.html" class="bottom-nav-link" aria-label="Profile">
+            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd"></path></svg>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="data.js"></script>
+    <script src="products-page.js"></script>
+</body>
+</html>
