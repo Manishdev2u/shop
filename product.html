@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product - Flow Digital</title>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts and Main Stylesheet -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to your main stylesheet AND the dedicated product page stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="product-page.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo">Flow</a>
-            <div class="header-right">
-                <a href="index.html#products" class="btn btn-secondary">← Back to Store</a>
-                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
-            </div>
+    <!-- ========================================================== -->
+<!--  MASTER HEADER - USE THIS ON ALL PAGES -->
+<!-- ========================================================== -->
+<header class="header">
+    <div class="container header-container">
+        <a href="index.html" class="logo">Flow</a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="#about">About</a>
+            <a href="admin/product-creator.html">Admin</a>
+        </nav>
+        <div class="header-right">
+            <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
+    <!-- The icon will be injected here by JavaScript -->
+</button>
+           
+    </div>
+</header>
+
+<!-- ========================================================== -->
+<!--  MASTER MOBILE SIDE NAVIGATION - USE THIS ON ALL PAGES     -->
+<!-- ========================================================== -->
+<div id="mobile-nav" class="mobile-nav-overlay">
+    <button id="mobile-close-btn" class="mobile-close-btn">×</button>
+    <nav class="mobile-nav-links">
+        <a href="index.html" style="--stagger: 1;">Home</a>
+        <a href="products.html" style="--stagger: 2;">Products</a>
+        <a href="#about" style="--stagger: 3;">About</a>
+        
+        <!-- This div shows when logged OUT -->
+        <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 4;">
+            <a href="login.html" class="btn btn-secondary">Login</a>
+            <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
         </div>
-    </header>
+        
+        <!-- This div shows when logged IN -->
+        <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 4;">
+             <a href="account.html" class="btn btn-primary">My Account</a>
+             <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+        </div>
+    </nav>
+</div>
 
     <main>
         <div class="container" id="product-detail-container">
-            <!-- Skeleton Loader for an excellent loading experience -->
+            <!-- Skeleton Loader for a great loading experience -->
             <div class="product-detail-layout skeleton">
                 <div class="product-main-content">
                     <div class="skeleton-image main"></div>
@@ -41,9 +79,17 @@
         </div>
     </main>
     
-    <footer class="footer"><div class="container footer-bottom"><p>© 2024 Flow Digital. All Rights Reserved.</p></div></footer>
+    <!-- This is the mobile-only sticky bar that will be populated by JS -->
+    <div id="mobile-purchase-bar" class="mobile-purchase-bar"></div>
+    
+    <footer class="footer">
+        <!-- Your Master Footer HTML (same as index.html) -->
+    </footer>
 
+    <!-- All the necessary scripts for this page -->
     <script src="data.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="product-page.js"></script>
 </body>
 </html>

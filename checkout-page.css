@@ -1,0 +1,93 @@
+/*
+=====================================================
+  ATTRACTIVE & POLISHED CHECKOUT PAGE (V3)
+=====================================================
+*/
+:root { /* Ensure colors match your preferred theme */
+    --bg-color-checkout: #0D1117;
+    --surface-color-checkout: #161B22;
+    --border-color-checkout: #30363d;
+    --text-primary-checkout: #e6edf3;
+    --text-secondary-checkout: #8b949e;
+    --primary-color-checkout: #5865F2;
+    --input-bg-checkout: #0d1117;
+}
+
+.checkout-page-body {
+    background-color: var(--bg-color-checkout);
+    color: var(--text-primary-checkout);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+.auth-bg-aurora { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; filter: blur(100px); opacity: 0.3; }
+
+.checkout-main { padding: 2rem 0 4rem; }
+.checkout-page-title { text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2.5rem; }
+.checkout-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+/* Redesigned Glass Card */
+.checkout-card {
+    background: color-mix(in srgb, var(--surface-color-checkout) 30%, transparent);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-color-checkout);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+.checkout-card h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; }
+
+/* Redesigned Input Fields */
+.input-group-v3 { margin-bottom: 1.5rem; }
+.input-group-v3 label { display: block; font-size: 0.9rem; color: var(--text-secondary-checkout); margin-bottom: 0.5rem; }
+.input-group-v3 input {
+    width: 100%;
+    background: var(--input-bg-checkout);
+    border: 1px solid var(--border-color-checkout);
+    color: var(--text-primary-checkout);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+}
+.input-group-v3 input:focus {
+    border-color: var(--primary-color-checkout);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color-checkout) 20%, transparent);
+}
+.input-group-v3 input:disabled { color: var(--text-secondary-checkout); background: var(--surface-color-checkout); cursor: not-allowed; }
+
+/* Item Display */
+.checkout-item-card { display: flex; gap: 1rem; align-items: center; }
+.checkout-item-image { width: 80px; height: 80px; border-radius: 0.5rem; object-fit: cover; flex-shrink: 0; }
+.checkout-item-details h3 { font-size: 1.1rem; font-weight: 600; }
+.checkout-item-details .item-subtitle { font-size: 0.9rem; color: var(--text-secondary-checkout); }
+.checkout-item-details .item-price { font-size: 1.1rem; font-weight: 500; margin-top: 0.25rem; }
+
+/* Order Summary */
+.price-summary { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+.price-row { display: flex; justify-content: space-between; font-size: 1rem; }
+.price-row span:first-child { color: var(--text-secondary-checkout); }
+.price-row.total { font-weight: 700; font-size: 1.25rem; margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color-checkout); }
+.price-row.total span:first-child { color: white; }
+.price-row.discount { color: #22c55e; font-weight: 600; }
+
+.coupon-section { padding-top: 1.5rem; border-top: 1px solid var(--border-color-checkout); }
+.coupon-input-group { display: flex; gap: 0.5rem; }
+.coupon-input-group input { flex-grow: 1; background-color: var(--input-bg-checkout); border: 1px solid var(--border-color-checkout); border-radius: 0.5rem; padding: 0.6rem 0.75rem; color: white; }
+.coupon-input-group button { background: none; border: 1px solid var(--border-color-checkout); color: white; padding: 0 1rem; border-radius: 0.5rem; cursor: pointer; }
+.coupon-message { font-size: 0.9rem; margin-top: 0.75rem; height: 1.2em; font-weight: 500; }
+.coupon-message.success { color: #22c55e; }
+.coupon-message.error { color: #ef4444; }
+
+/* The Attractive Gradient Button */
+.btn-primary-gradient { width: 100%; padding: 0.8rem; border-radius: 0.5rem; font-weight: 600; color: white; background-image: linear-gradient(to right, #4F46E5 0%, #A259FF 50%, #4F46E5 100%); background-size: 200% auto; border: none; cursor: pointer; margin: 1.5rem 0 1rem; transition: all 0.3s ease-in-out; }
+.btn-primary-gradient:hover { background-position: right center; box-shadow: var(--shadow-glow); }
+
+.secure-checkout-text { display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary-checkout); }
+.secure-checkout-text svg { color: #22c55e; }
+
+/* Responsive */
+@media (min-width: 992px) {
+    .checkout-grid { grid-template-columns: 2fr 1fr; align-items: flex-start; gap: 2rem; }
+    .checkout-sidebar { position: sticky; top: 120px; }
+}

@@ -162,3 +162,81 @@ function renderHomepageContent() {
         productGrid.appendChild(productCard);
     });
 }
+
+// In script.js, inside the DOMContentLoaded event listener
+
+// --- NEWSLETTER FORM LOGIC ---
+const newsletterForm = document.getElementById('newsletter-form');
+newsletterForm?.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevents the page from reloading
+    const emailInput = document.getElementById('newsletter-email');
+    const email = emailInput.value;
+
+    if (email) {
+        // In a real app, you would send this email to a service like Mailchimp
+        alert(`Thank you! ${email} has been added to our mailing list.`);
+        emailInput.value = ''; // Clear the input field
+    }
+});
+
+// In your main script.js file
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Your Firebase Init) ...
+    
+    // Call the header setup function
+    setupHeaderAndNav(auth);
+    
+    // --- NEW: Add this function call ---
+    setActiveBottomNavLink();
+
+    // ... (The rest of your code, like the auth listener) ...
+});
+
+// --- NEW: Add this entire function to your script.js file ---
+function setActiveBottomNavLink() {
+    const currentPage = window.location.pathname.split('/').pop(); // Gets the current file name (e.g., "products.html")
+    const navLinks = document.querySelectorAll('.bottom-nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active'); // First, remove active from all links
+        const linkPage = link.getAttribute('href');
+
+        // Check if the link's href matches the current page
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    // A special case for the homepage (index.html)
+    if (currentPage === '' || currentPage === 'index.html') {
+        document.querySelector('.bottom-nav-link[href="index.html"]').classList.add('active');
+    }
+}
+
+// In your main script.js file
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (Your other code, like setupHeaderAndNav) ...
+    
+    // --- Add this function call ---
+    setActiveBottomNavLink();
+});
+
+// --- Add this entire function ---
+function setActiveBottomNavLink() {
+    const currentPage = window.location.pathname.split('/').pop();
+    const navLinks = document.querySelectorAll('.bottom-nav-link');
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkPage = link.getAttribute('href');
+        if (linkPage === currentPage) {
+            link.classList.add('active');
+        }
+    });
+
+    if (currentPage === '' || currentPage === 'index.html') {
+        document.querySelector('.bottom-nav-link[href="index.html"]')?.classList.add('active');
+    }
+}

@@ -19,6 +19,14 @@
  * ==================================================================================
  */
 
+// At the top of data.js
+
+const coupons = [
+    { code: "SAVE20", type: "percent", value: 20 }, // 20% off
+    { code: "FLAT20", type: "fixed", value: 20 }, // Flat ₹20 off
+    { code: "FREESHIP", type: "free", value: 0 } // Example for other types
+];
+
 const products = [
   {
     id: 1,
@@ -103,7 +111,10 @@ const products = [
     short_description: "gffd",
     long_description: "fdgfgd",
     features: [
-      "asdasd"
+      "Supports 50+ languages",
+      "Dozens of beautiful themes",
+      "Customize fonts, backgrounds, and more",
+      "Native macOS & Windows app"
     ],
     link: "https://www.instagram.com/manish.barman_/",
     screenshots: []

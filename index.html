@@ -244,41 +244,75 @@
 </section>
 
     
-    <footer id="about" class="footer">
-        <div class="container footer-content">
-            <div class="footer-about">
+    <!-- ========================================================== -->
+<!--  MASTER FOOTER - USE THIS ON ALL PAGES -->
+<!-- ========================================================== -->
+<footer id="about" class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Column 1: Brand & Newsletter -->
+            <div class="footer-column footer-brand-column">
                 <a href="index.html" class="logo">Flow</a>
-                <p>The best place to find digital assets that accelerate your workflow and elevate your creative projects.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter"></a>
-                    <a href="#" aria-label="Instagram"></a>
-                    <a href="#" aria-label="Dribbble"></a>
-                </div>
+                <p class="footer-tagline">Premium digital assets to supercharge your creativity.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <label for="newsletter-email">Stay Updated</label>
+                    <div class="newsletter-input-group">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        <button type="submit" aria-label="Subscribe to newsletter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M3.105 3.105a1.5 1.5 0 011.06.44L15.31 14.69a1.5 1.5 0 01-2.12 2.12l-11.15-11.15a1.5 1.5 0 011.06-2.56z" /><path d="M16.995 3.105a1.5 1.5 0 012.12 2.12L7.31 16.995a1.5 1.5 0 01-2.56-1.06l.16-3.193a.75.75 0 00-.329-.657l-6.09-4.568a1.5 1.5 0 011.06-2.56l3.193-.16a.75.75 0 00.657-.329l4.568-6.09z" /></svg>
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="footer-links-group">
-                <div class="footer-links">
-                    <h4>Navigate</h4>
-                    <a href="index.html">Home</a>
-                    <a href="#products">Products</a>
-                    <a href="#about">About</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Refund Policy</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Connect</h4>
-                    <a href="#">Contact Us</a>
-                    <a href="admin/product-creator.html">Admin Panel</a>
-                </div>
+
+            <!-- Column 2: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">UI Kits</a></li>
+                    <li><a href="#">Templates</a></li>
+                    <li><a href="#">Icons</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+             <!-- Column 4: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Admin</h4>
+                <ul>
+                    <li><a href="admin/product-creator.html">Product Creator</a></li>
+                    <li><a href="login.html">Admin Login</a></li>
+                </ul>
             </div>
         </div>
-        <div class="container footer-bottom">
+
+        <div class="footer-bottom">
             <p>© 2024 Flow Digital. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- Twitter SVG Path --></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- Instagram SVG Path --></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- GitHub SVG Path --></svg>
+                </a>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
     
     <nav class="bottom-nav">
         <a href="index.html" class="bottom-nav-link active" aria-label="Home">

@@ -3,26 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account - Flow Digital</title>
+    <title>My Dashboard - Flow Digital</title>
     
-    <!-- Firebase Libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
     <!-- Fonts and Stylesheets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Link to your main stylesheet AND the dedicated account page stylesheet -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="account-page.css">
 </head>
 <body>
-
-   <!-- ========================================================== -->
-<!--  MASTER HEADER - USE THIS ON ALL PAGES -->
+    <!-- ========================================================== -->
+<!--  MASTER HEADER (For Desktop)                               -->
 <!-- ========================================================== -->
 <header class="header">
     <div class="container header-container">
@@ -36,24 +28,30 @@
             </nav>
         </div>
         <div class="header-right">
+            <!-- Theme Toggle Button with Icon -->
             <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
-    <!-- The icon will be injected here by JavaScript -->
-</button>
+                <!-- Icon is injected by JavaScript -->
+            </button>
             
-            <!-- These are toggled by JavaScript -->
+            <!-- Auth Buttons (Toggled by JavaScript) -->
             <div id="auth-buttons" class="auth-buttons">
                 <a href="login.html" class="btn btn-secondary">Login</a>
                 <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
             </div>
+            
+            <!-- My Account Button (Toggled by JavaScript) -->
             <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
             
-            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"></button>
+            <!-- Mobile Menu "Hamburger" Button -->
+            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu">
+                <!-- The hamburger icon is usually done with CSS -->
+            </button>
         </div>
     </div>
 </header>
 
 <!-- ========================================================== -->
-<!--  MASTER MOBILE SIDE NAVIGATION - USE THIS ON ALL PAGES     -->
+<!--  MASTER MOBILE SIDE NAVIGATION (Overlay)                   -->
 <!-- ========================================================== -->
 <div id="mobile-nav" class="mobile-nav-overlay">
     <button id="mobile-close-btn" class="mobile-close-btn">×</button>
@@ -61,10 +59,14 @@
         <a href="index.html" style="--stagger: 1;">Home</a>
         <a href="products.html" style="--stagger: 2;">Products</a>
         <a href="#about" style="--stagger: 3;">About</a>
+        
+        <!-- Logged OUT state -->
         <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 4;">
             <a href="login.html" class="btn btn-secondary">Login</a>
             <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
         </div>
+        
+        <!-- Logged IN state -->
         <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 4;">
              <a href="account.html" class="btn btn-primary">My Account</a>
              <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
@@ -73,90 +75,169 @@
 </div>
 
 <!-- ========================================================== -->
-<!--  MASTER MOBILE BOTTOM NAVIGATION - USE THIS ON ALL PAGES   -->
+<!--  MASTER MOBILE BOTTOM NAVIGATION - ACCOUNT PAGE VERSION    -->
 <!-- ========================================================== -->
 <nav class="bottom-nav">
     <a href="index.html" class="bottom-nav-link" aria-label="Home">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
+            <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V19.5a.75.75 0 01-.75.75h-2.125A1.875 1.875 0 015 19.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
+        </svg>
         <span>Home</span>
     </a>
     <a href="products.html" class="bottom-nav-link" aria-label="Products">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M10.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path>
+            <path fill-rule="evenodd" d="M4.125 3.375A.75.75 0 003 4.125v15.75A.75.75 0 004.125 21h15.75A.75.75 0 0021 19.875V4.125A.75.75 0 0019.875 3h-1.625a.75.75 0 010-1.5h1.625A2.25 2.25 0 0121 3.375v15.75A2.25 2.25 0 0118.625 21h-13.25A2.25 2.25 0 013 18.625V4.125A2.25 2.25 0 015.375 1.5h1.625a.75.75 0 010 1.5H5.375A.75.75 0 004.5 3.375h-.375z" clip-rule="evenodd"></path>
+            <path d="M13.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path>
+        </svg>
         <span>Products</span>
     </a>
     <a href="#" class="bottom-nav-link" aria-label="Support">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.75 15l.375-.375a.75.75 0 00-1.125 0L12 14.625l-.375.375a.75.75 0 001.125 0L12.75 15z"></path>
+            <path fill-rule="evenodd" d="M12 21a8.25 8.25 0 008.25-8.25c0-4.135-3.003-7.535-6.937-8.161a.75.75 0 00-.563.133c-.352.23-.523.668-.415 1.066A6.72 6.72 0 0112 5.25a6.75 6.75 0 014.163 11.53c.12.1.226.173.315.242a.75.75 0 00.978-1.123 8.22 8.22 0 00-2.212-2.428A6.75 6.75 0 0112 12.75a6.72 6.72 0 01-5.25-2.007.75.75 0 00-.415-1.066.75.75 0 00-.563-.133C1.753 10.215 1.5 11.006 1.5 12.75 1.5 17.513 5.237 21 9.75 21h.75a.75.75 0 00.75-.75V18a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v2.25a.75.75 0 00.75.75h.75z" clip-rule="evenodd"></path>
+        </svg>
         <span>Support</span>
     </a>
-    <a href="account.html" class="bottom-nav-link active" aria-label="Profile"> <!-- Note the 'active' class -->
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="..."></path></svg>
+    <!-- The "active" class is now correctly on the Profile link for this page -->
+    <a href="account.html" class="bottom-nav-link active" aria-label="Profile">
+        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd"></path>
+        </svg>
         <span>Profile</span>
     </a>
 </nav>
 
     <main class="account-main">
         <div class="container">
-            <!-- Page Loader -->
-            <div id="page-loader" class="page-loader">
-                <div class="spinner"></div>
-                <p>Loading Your Account...</p>
-            </div>
+            <div id="page-loader" class="page-loader"><div class="spinner"></div><p>Loading Your Dashboard...</p></div>
 
-            <!-- Main Account Content (hidden until loaded) -->
-            <div id="account-content" class="dashboard-grid" style="display: none;">
+            <div id="account-content" class="dashboard-grid-v2" style="display: none;">
                 
-                <!-- Left Column: User Profile Sidebar -->
-                <aside class="dashboard-sidebar">
-                    <div class="profile-card-v2">
-                        <div class="profile-avatar">
+                <aside class="dashboard-sidebar-v2">
+                    <div class="profile-summary">
+                        <div class="profile-avatar" id="avatar-upload-trigger" title="Click to change avatar">
+                            <svg class="avatar-progress-ring" width="86" height="86"><circle class="progress-ring-track" stroke-width="3" fill="transparent" r="40" cx="43" cy="43"/><circle class="progress-ring-circle" stroke-width="3" fill="transparent" r="40" cx="43" cy="43"/></svg>
                             <img id="user-avatar-img" src="assets/default-avatar.png" alt="User Avatar">
                         </div>
-                        <h1 id="user-name">Loading...</h1>
-                        <p id="user-email">loading@email.com</p>
+                        <input type="file" id="avatar-file-input" accept="image/*" style="display:none;">
+                        <h2 id="user-name" class="profile-name">Loading...</h2>
+                        <p id="user-email" class="profile-email">loading@email.com</p>
+                    </div>
+                    <nav class="dashboard-nav">
+                        <a href="#" class="nav-item active" data-tab="dashboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M5.25 3A2.25 2.25 0 003 5.25v9.5A2.25 2.25 0 005.25 17h9.5A2.25 2.25 0 0017 14.75v-9.5A2.25 2.25 0 0014.75 3h-9.5zM8.5 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5a.75.75 0 01.75-.75zM11.5 8a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75z"/></svg><span>Dashboard</span></a>
+                        <a href="#" class="nav-item" data-tab="downloads"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03L10.75 11.364V2.75z" /><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" /></svg><span>My Downloads</span></a>
+                        <a href="#" class="nav-item" data-tab="history"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" /></svg><span>Order History</span></a>
+                        <a href="#" class="nav-item" data-tab="settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M11.078 2.25c-.217-.065-.434-.1-.662-.134a1.75 1.75 0 00-1.76 1.76c0 .228.035.445.1.662A8.22 8.22 0 002.25 11.078c.065.217.1.434.134.662a1.75 1.75 0 001.76 1.76c.228 0 .445-.035.662-.1a8.22 8.22 0 007.016 7.016c.217.065.434.1.662.134a1.75 1.75 0 001.76-1.76c0-.228-.035-.445-.1-.662A8.22 8.22 0 0017.75 8.922c-.065-.217-.1-.434-.134-.662a1.75 1.75 0 00-1.76-1.76c-.228 0-.445.035-.662.1A8.22 8.22 0 008.922 2.25zM15.25 10a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" clip-rule="evenodd" /></svg><span>Settings</span></a>
+                    </nav>
+                    <div class="sidebar-footer">
                         <button id="sidebar-logout-btn" class="btn btn-secondary btn-full">Logout</button>
                     </div>
                 </aside>
 
-                <!-- Right Column: Main Content -->
                 <div class="dashboard-main-content">
-                    <!-- Section 1: My Downloads -->
-                    <section id="downloads-section" class="dashboard-section">
-                        <h2 class="section-title">My Downloads</h2>
-                        <div id="orders-grid" class="orders-grid">
-                            <p>You have no purchased products yet.</p>
+                    <div id="tab-content">
+                        <div class="tab-panel active" id="dashboard-panel">
+                            <div class="welcome-header"><h1>Welcome back, <span id="welcome-user-name">User</span>!</h1><p>Here's a quick overview of your account.</p></div>
+                            <div class="stats-grid">
+                                <div class="stat-card"><div class="stat-value" id="stat-total-purchased">0</div><div class="stat-label">Products Purchased</div></div>
+                                <div class="stat-card"><div class="stat-value" id="stat-member-since">--</div><div class="stat-label">Member Since</div></div>
+                            </div>
                         </div>
-                    </section>
-
-                    <!-- Section 2: Account Settings -->
-                    <section id="settings-section" class="dashboard-section">
-                        <h2 class="section-title">Account Settings</h2>
-                        <div class="settings-card">
-                             <form id="settings-form">
-                                <div class="settings-grid">
-                                    <div class="input-group">
-                                        <label for="setting-name">Full Name</label>
-                                        <input type="text" id="setting-name" placeholder="John Doe">
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="setting-email">Email Address</label>
-                                        <input type="email" id="setting-email" disabled>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="setting-password">New Password</label>
-                                        <input type="password" id="setting-password" placeholder="Leave blank to keep current">
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Update Profile</button>
-                                <p id="update-success-message" class="success-message" style="display:none;">Profile updated successfully!</p>
-                            </form>
+                        <div class="tab-panel" id="downloads-panel"><h2 class="section-title">My Downloads</h2><div id="orders-grid" class="orders-grid"></div></div>
+                        <div class="tab-panel" id="settings-panel">
+                             <h2 class="section-title">Account Settings</h2>
+                             <div class="settings-card"><h3>Profile Information</h3><form id="name-update-form" class="settings-form"><div class="input-group-glass"><label for="setting-name">Full Name</label><input type="text" id="setting-name"></div><button type="submit" class="btn btn-primary">Update Name</button></form></div>
+                             <div class="settings-card"><h3>Password</h3><div class="setting-item"><p class="setting-desc">Click the button to send a password reset link to your email.</p><button id="change-password-btn" class="btn btn-secondary">Send Reset Link</button></div></div>
+                             <div class="settings-card danger-zone"><h3>Danger Zone</h3><div class="setting-item"><p class="setting-desc">Deleting your account is permanent and will remove all your data.</p><button id="delete-account-btn" class="btn-danger">Delete My Account</button></div></div>
+                             <p id="settings-message" class="settings-message"></p>
                         </div>
-                    </section>
+                        <div class="tab-panel" id="history-panel">
+                             <h2 class="section-title">Order History</h2><div class="order-history-table"><table><thead><tr><th>Order ID</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody id="order-history-body"></tbody></table></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     
+<!-- ========================================================== -->
+<!--  MASTER FOOTER - USE THIS ON ALL PAGES -->
+<!-- ========================================================== -->
+<footer id="about" class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <!-- Column 1: Brand & Newsletter -->
+            <div class="footer-column footer-brand-column">
+                <a href="index.html" class="logo">Flow</a>
+                <p class="footer-tagline">Premium digital assets to supercharge your creativity.</p>
+                <form id="newsletter-form" class="newsletter-form">
+                    <label for="newsletter-email">Stay Updated</label>
+                    <div class="newsletter-input-group">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        <button type="submit" aria-label="Subscribe to newsletter">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M3.105 3.105a1.5 1.5 0 011.06.44L15.31 14.69a1.5 1.5 0 01-2.12 2.12l-11.15-11.15a1.5 1.5 0 011.06-2.56z" /><path d="M16.995 3.105a1.5 1.5 0 012.12 2.12L7.31 16.995a1.5 1.5 0 01-2.56-1.06l.16-3.193a.75.75 0 00-.329-.657l-6.09-4.568a1.5 1.5 0 011.06-2.56l3.193-.16a.75.75 0 00.657-.329l4.568-6.09z" /></svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Column 2: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">UI Kits</a></li>
+                    <li><a href="#">Templates</a></li>
+                    <li><a href="#">Icons</a></li>
+                    <li><a href="products.html">All Products</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+
+             <!-- Column 4: Links -->
+            <div class="footer-column footer-links-column">
+                <h4>Admin</h4>
+                <ul>
+                    <li><a href="admin/product-creator.html">Product Creator</a></li>
+                    <li><a href="login.html">Admin Login</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Flow Digital. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- Twitter SVG Path --></svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- Instagram SVG Path --></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><!-- GitHub SVG Path --></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
     <script src="data.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
     <script src="account.js"></script>
 </body>
 </html>
