@@ -67,6 +67,234 @@
     .dashboard-sidebar-v2 { position: sticky; top: 120px; align-self: start; }
 }
 
+
+/*
+=====================================================
+  ATTRACTIVE DOWNLOADS & ORDER HISTORY STYLES
+=====================================================
+*/
+
+/* --- General Section Styling --- */
+.tab-panel {
+    background: color-mix(in srgb, var(--surface-color) 20%, transparent);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, var(--border-color) 30%, transparent);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-lg);
+}
+
+/* --- New Compact Downloads List --- */
+.download-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.download-item-v2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--surface-color);
+    padding: 1rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+}
+.download-item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.download-item-details {
+    flex-grow: 1;
+}
+.download-item-details h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.download-item-details p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+.btn-download {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* New Empty State Card */
+.empty-state-card {
+    background-color: var(--surface-color);
+    padding: 3rem 1.5rem;
+    border-radius: var(--border-radius-lg);
+    border: 2px dashed var(--border-color);
+    text-align: center;
+}
+.empty-state-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.empty-state-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+
+/* --- New Attractive Order History Table --- */
+.order-history-table {
+    overflow-x: auto; /* For responsive tables */
+}
+.order-history-table table {
+    width: 100%;
+    border-collapse: separate; /* Allows for border-radius on rows */
+    border-spacing: 0;
+}
+.order-history-table th, .order-history-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.order-history-table th {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+.order-history-table tr:hover {
+    background-color: var(--secondary-hover);
+}
+.order-history-table td strong {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-primary);
+}
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-badge.completed {
+    background-color: color-mix(in srgb, #22c55e 15%, transparent);
+    color: #22c55e;
+}
+
+
+/*
+=====================================================
+  ATTRACTIVE & FULLY RESPONSIVE ORDER HISTORY TABLE
+=====================================================
+*/
+
+.order-history-table {
+    width: 100%;
+    /* No horizontal scroll on the container */
+}
+.order-history-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border-color);
+    overflow: hidden; /* Important for border-radius */
+}
+
+.order-history-table th, 
+.order-history-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+/* Hide table header on mobile, we'll use data-labels instead */
+.order-history-table thead {
+    display: none;
+}
+
+.order-history-table tr {
+    display: block; /* Make each row a block */
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-color); /* Give each "card" a background */
+    border: 1px solid var(--border-color);
+}
+/* Remove bottom margin from the last row */
+.order-history-table tr:last-child {
+    margin-bottom: 0;
+}
+
+.order-history-table td {
+    display: flex; /* Use flexbox for label/value layout */
+    justify-content: space-between; /* Pushes label and value to opposite ends */
+    align-items: center;
+    text-align: right; /* Align the value to the right */
+    border-bottom: 1px dashed var(--border-color);
+}
+.order-history-table td:last-child {
+    border-bottom: none; /* No border on the last cell of a card */
+}
+
+/* This is the magic part that creates the labels on mobile */
+.order-history-table td::before {
+    content: attr(data-label); /* Use the data-label attribute as content */
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: left;
+    margin-right: 1rem;
+}
+
+.no-history-cell {
+    text-align: center !important;
+    padding: 2rem;
+}
+.no-history-cell::before {
+    content: "" !important; /* Hide the label for the empty state */
+}
+
+/* (Your existing .status-badge styles are perfect and can remain) */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-badge.completed {
+    background-color: color-mix(in srgb, #22c55e 15%, transparent);
+    color: #22c55e;
+}
+
+
+/* --- DESKTOP VIEW: Transform back into a traditional table --- */
+/* We use a media query for screens 768px and wider */
+@media (min-width: 768px) {
+    .order-history-table thead {
+        display: table-header-group; /* Show the header again */
+    }
+    .order-history-table tr {
+        display: table-row; /* Rows behave like normal table rows */
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        transition: background-color 0.2s;
+    }
+    .order-history-table tr:hover {
+        background-color: var(--secondary-hover);
+    }
+    .order-history-table td {
+        display: table-cell; /* Cells behave like normal table cells */
+        text-align: left; /* Revert text alignment */
+        border-bottom: 1px solid var(--border-color);
+    }
+    .order-history-table tr:last-child td {
+        border-bottom: none; /* No border on the last row of the table */
+    }
+    .order-history-table td::before {
+        display: none; /* Hide the data-label pseudo-elements */
+    }
+}
+
 /*
 =====================================================
   ATTRACTIVE "GLASS" TEXTBOX STYLE
@@ -107,3 +335,4 @@
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 20%, transparent);
     background: var(--surface-color); /* Slightly change background on focus */
 }
+

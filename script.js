@@ -137,30 +137,39 @@ function renderHomepageContent() {
     if (!productGrid) return;
 
     // We'll show a limited number of products on the homepage (e.g., the first 6)
-    const homepageProducts = products.slice(0, 6);
+    const homepageProducts = products.slice(0, 4);
     
     productGrid.innerHTML = ''; // Clear existing content
 
-    homepageProducts.forEach((p, i) => {
-        // This reuses the beautiful card design from your products page
-        const productCard = document.createElement('a');
-        productCard.href = `product.html?id=${p.id}`;
-        productCard.className = 'product-card';
-        productCard.style.animationDelay = `${i * 30}ms`;
-        productCard.innerHTML = `
-            <div class="product-card-glow"></div>
-            <span class="product-badge">${p.badge_text || 'Featured'}</span>
-            <div class="product-image-wrapper"><img src="${p.image}" alt="${p.name}" class="product-image"></div>
-            <div class="product-info">
-                <h3 class="product-title">${p.name}</h3>
-                <div class="product-footer">
-                    <span class="product-price">₹${p.price.toLocaleString('en-IN')}</span>
-                    <div class="btn-buy-now">View</div>
-                </div>
+    // In script.js, inside your homepage rendering function
+
+homepageProducts.forEach((p, i) => {
+    // --- THIS IS THE NEW LOGIC ---
+    // Check if a custom_url exists. If not, create the default URL.
+    const productUrl = p.custom_url ? p.custom_url : `product.html?id=${p.id}`;
+
+    const productCard = document.createElement('a');
+    // The entire card now links to the correct URL
+    productCard.href = productUrl; 
+    productCard.className = 'product-card';
+    productCard.style.animationDelay = `${i * 30}ms`;
+    
+    // The rest of the HTML uses this same `productUrl` for consistency
+    productCard.innerHTML = `
+        <div class="product-card-glow"></div>
+        <span class="product-badge">${p.badge_text || 'Featured'}</span>
+        <div class="product-image-wrapper"><img src="${p.image}" alt="${p.name}" class="product-image"></div>
+        <div class="product-info">
+            <h3 class="product-title">${p.name}</h3>
+            <div class="product-footer">
+                <span class="product-price">₹${p.price.toLocaleString('en-IN')}</span>
+                <!-- This now says "View" instead of being a separate link -->
+                <div class="btn-buy-now">View</div> 
             </div>
-        `;
-        productGrid.appendChild(productCard);
-    });
+        </div>
+    `;
+    productGrid.appendChild(productCard);
+});
 }
 
 // In script.js, inside the DOMContentLoaded event listener

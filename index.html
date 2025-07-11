@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow Digital - Premium Digital Assets</title>
+    <title>DevTips - Premium Digital Assets</title>
     <meta name="description" content="Premium digital tools, resources, and assets for modern creators and developers.">
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
@@ -22,12 +22,11 @@
 <!-- ========================================================== -->
 <header class="header">
     <div class="container header-container">
-        <a href="/" class="logo">Flow</a>
+        <a href="index.html" class="logo">MNHDevTip</a>
         <nav class="main-nav">
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/support">About</a>
-            <a href="admin/product-creator.html">Admin</a>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="support.html">Support</a>
         </nav>
         <div class="header-right">
             <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
@@ -36,57 +35,109 @@
             
             <!-- These two divs are toggled by JavaScript -->
             <div id="auth-buttons" class="auth-buttons">
-                <a href="/login" class="btn btn-secondary">Login</a>
-                <a href="/login?mode=signup" class="btn btn-primary">Sign Up</a>
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
             </div>
-            <a href="/account" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
+            <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
             
-            <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"></button>
-        </div>
+<!-- === FIND THIS EMPTY BUTTON in your header... === -->
+<!-- <button id="mobile-menu-btn" class="header-icon-btn mobile-menu-btn" aria-label="Open menu">
+    <img src="https://img.icons8.com/m_outlined/512/FFFFFF/menu.png" alt="Menu Icon">
+</button> -->
+
+
+<!-- === ...AND REPLACE IT WITH THIS NEW, COMPLETE VERSION === -->
+<button id="mobile-menu-btn" class="header-icon-btn mobile-menu-btn" aria-label="Open menu">
+    <img src="https://img.icons8.com/m_outlined/512/FFFFFF/menu.png" alt="Menu Icon">
+</button>
+<!-- === END OF REPLACEMENT === -->        </div>
     </div>
 </header>
 
 <!-- ========================================================== -->
-<!--  MASTER MOBILE SIDE NAVIGATION - USE THIS ON ALL PAGES     -->
+<!--  EXCEPTIONALLY ATTRACTIVE MOBILE NAVIGATION (V5)           -->
 <!-- ========================================================== -->
 <div id="mobile-nav" class="mobile-nav-overlay">
-    <button id="mobile-close-btn" class="mobile-close-btn">×</button>
-    <nav class="mobile-nav-links">
-        <a href="index.html" style="--stagger: 1;">Home</a>
-        <a href="/products" style="--stagger: 2;">Products</a>
-        <a href="/support" style="--stagger: 3;">About</a>
-        
-        <!-- This div shows when logged OUT -->
-        <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 4;">
-            <a href="/login" class="btn btn-secondary">Login</a>
-            <a href="/login?mode=signup" class="btn btn-primary">Sign Up</a>
+    <!-- The animated background effect -->
+    <div class="auth-bg-aurora">
+        <div class="aurora-shape-1"></div>
+        <div class="aurora-shape-2"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">ManishDevTips</a>
+            <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">×</button>
         </div>
         
-        <!-- This div shows when logged IN -->
-        <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 4;">
-             <a href="account.html" class="btn btn-primary">My Account</a>
-             <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
-        </div>
-    </nav>
-</div>
+        <nav class="mobile-nav-links">
+            <!-- Main Navigation Group -->
+            <div class="nav-group">
+                <a href="index.html" class="nav-link-mobile" style="--stagger: 1;">Home</a>
+                <a href="products.html" class="nav-link-mobile" style="--stagger: 2;">Products</a>
+                <a href="support.html" class="nav-link-mobile" style="--stagger: 3;">Support</a>
+            </div>
+            
+            <hr class="nav-divider">
 
+            <!-- Legal Links Group -->
+            <div class="nav-group">
+                <a href="privacy-policy.html" class="nav-link-mobile secondary" style="--stagger: 4;">Privacy Policy</a>
+                <a href="Terms-and-Conditions.html" class="nav-link-mobile secondary" style="--stagger: 5;">Terms & Conditions</a>
+                <a href="disclaimer.html" class="nav-link-mobile secondary" style="--stagger: 6;">Disclaimer</a>
+                <a href="refund-policy.html" class="nav-link-mobile secondary" style="--stagger: 7;">Refund Policy</a>
+            </div>
+        </nav>
+
+        <div class="mobile-nav-footer">
+            <div class="mobile-social-links">
+                <a href="#" aria-label="Twitter"><!-- Twitter SVG --></a>
+                <a href="#" aria-label="Instagram"><!-- Instagram SVG --></a>
+                <a href="#" aria-label="GitHub"><!-- GitHub SVG --></a>
+            </div>
+            <!-- Logged OUT state -->
+            <div id="mobile-auth-links" class="mobile-auth-actions">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Create Account</a>
+            </div>
+            <!-- Logged IN state -->
+            <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none;">
+                 <a href="account.html" class="btn btn-primary">My Account</a>
+                 <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ========================================================== -->
-<!--  MASTER MOBILE BOTTOM NAVIGATION - USE THIS ON ALL PAGES   -->
+<!--  MASTER MOBILE BOTTOM NAVIGATION BAR                       -->
 <!-- ========================================================== -->
 <nav class="bottom-nav">
-    <a href="/index" class="bottom-nav-link active" aria-label="Home">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V19.5a.75.75 0 01-.75.75h-2.125A1.875 1.875 0 015 19.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path></svg>
+    <a href="index.html" class="bottom-nav-link" aria-label="Home">
+        <div class="nav-icon-wrapper">
+            <img src="https://img.icons8.com/?&id=2797&format=png&color=FFFFFF" alt="Home Icon">
+        </div>
         <span>Home</span>
     </a>
-    <a href="/products" class="bottom-nav-link" aria-label="Products">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M10.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path><path fill-rule="evenodd" d="M4.125 3.375A.75.75 0 003 4.125v15.75A.75.75 0 004.125 21h15.75A.75.75 0 0021 19.875V4.125A.75.75 0 0019.875 3h-1.625a.75.75 0 010-1.5h1.625A2.25 2.25 0 0121 3.375v15.75A2.25 2.25 0 0118.625 21h-13.25A2.25 2.25 0 013 18.625V4.125A2.25 2.25 0 015.375 1.5h1.625a.75.75 0 010 1.5H5.375A.75.75 0 004.5 3.375h-.375z" clip-rule="evenodd"></path><path d="M13.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path></svg>
+    <a href="products.html" class="bottom-nav-link" aria-label="Products">
+        <div class="nav-icon-wrapper">
+            <img src="https://img.icons8.com/?id=EPIY1Za1GacU&format=png&color=FFFFFF" alt="Products Icon">
+        </div>
         <span>Products</span>
     </a>
-    <a href="/account" class="bottom-nav-link" aria-label="Profile">
-        <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd"></path></svg>
+    <a href="support.html" class="bottom-nav-link" aria-label="Support">
+         <div class="nav-icon-wrapper">
+            <img src="https://img.icons8.com/?&id=11267&format=png&color=FFFFFF" alt="Support Icon">
+        </div>
+        <span>Support</span>
+    </a>
+    <a href="account.html" class="bottom-nav-link" aria-label="Profile">
+        <div class="nav-icon-wrapper">
+            <img src="https://img.icons8.com/?&id=H101gtpJBVoh&format=png&color=FFFFFF" alt="Profile Icon">
+        </div>
         <span>Profile</span>
     </a>
 </nav>
+
     <main>
         <section class="hero">
             <div class="hero-aurora">
@@ -95,7 +146,7 @@
                 <div class="aurora-shape shape3"></div>
             </div>
             <div class="container hero-content">
-                <div class="welcome-pill"><span>Welcome To Flow Digital</span></div>
+                <div class="welcome-pill"><span>Welcome To ManishDevTips</span></div>
                 <h1 class="hero-title">Build Smarter.<br><span>Buy Smarter.</span></h1>
                 <p class="hero-subtitle">Premium digital tools, resources, and assets for modern creators and developers.</p>
                 <div class="hero-actions">
@@ -116,6 +167,8 @@
                 <div class="section-header">
                     <h2>Curated Digital Assets</h2>
                     <p>High-quality tools to accelerate your projects.</p>
+                                <hr class="nav-divider">
+
                 <div id="product-grid" class="product-grid">
     <!-- Products will be injected here -->
 </div>
@@ -252,7 +305,7 @@
         <div class="footer-content">
             <!-- Column 1: Brand & Newsletter -->
             <div class="footer-column footer-brand-column">
-                <a href="index.html" class="logo">Flow</a>
+                <a href="index.html" class="logo">ManishDevTips</a>
                 <p class="footer-tagline">Premium digital assets to supercharge your creativity.</p>
                 <form id="newsletter-form" class="newsletter-form">
                     <label for="newsletter-email">Stay Updated</label>
@@ -278,27 +331,30 @@
 
             <!-- Column 3: Links -->
             <div class="footer-column footer-links-column">
-                <h4>Company</h4>
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/support">Support</a></li>
+                    <li><a href="/account">Account</a></li>
                 </ul>
             </div>
 
              <!-- Column 4: Links -->
             <div class="footer-column footer-links-column">
-                <h4>Admin</h4>
+                <h4>Legal Details</h4>
                 <ul>
-                    <li><a href="admin/product-creator.html">Product Creator</a></li>
-                    <li><a href="login.html">Admin Login</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/refund-policy">Refund Policy</a></li>
+                    <li><a href="/Terms-and-Conditions">Terms & Conditions</a></li>
+                    <li><a href="/Disclaimer">Disclaimer</a></li>
+                    <li><a href="/support">Support</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2024 Flow Digital. All Rights Reserved.</p>
+            <p>© 2024 ManishDevTips. All Rights Reserved.</p>
             <div class="social-icons">
                 <a href="#" aria-label="Twitter">
                     <svg viewBox="0 0 24 24" fill="currentColor"><!-- Twitter SVG Path --></svg>
@@ -314,24 +370,7 @@
     </div>
 </footer>
     
-    <nav class="bottom-nav">
-        <a href="/index" class="bottom-nav-link active" aria-label="Home">
-            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path><path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V19.5a.75.75 0 01-.75.75h-2.125A1.875 1.875 0 015 19.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path></svg>
-            <span>Home</span>
-        </a>
-        <a href="/products" class="bottom-nav-link" aria-label="Products">
-            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M10.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path><path fill-rule="evenodd" d="M4.125 3.375A.75.75 0 003 4.125v15.75A.75.75 0 004.125 21h15.75A.75.75 0 0021 19.875V4.125A.75.75 0 0019.875 3h-1.625a.75.75 0 010-1.5h1.625A2.25 2.25 0 0121 3.375v15.75A2.25 2.25 0 0118.625 21h-13.25A2.25 2.25 0 013 18.625V4.125A2.25 2.25 0 015.375 1.5h1.625a.75.75 0 010 1.5H5.375A.75.75 0 004.5 3.375h-.375z" clip-rule="evenodd"></path><path d="M13.5 1.75a.75.75 0 00-1.5 0v1.25c0 .414.336.75.75.75h1.5a.75.75 0 000-1.5h-.75V1.75z"></path></svg>
-            <span>Products</span>
-        </a>
-        <a href="/support" class="bottom-nav-link" aria-label="Support">
-            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.75 15l.375-.375a.75.75 0 00-1.125 0L12 14.625l-.375.375a.75.75 0 001.125 0L12.75 15z"></path><path fill-rule="evenodd" d="M12 21a8.25 8.25 0 008.25-8.25c0-4.135-3.003-7.535-6.937-8.161a.75.75 0 00-.563.133c-.352.23-.523.668-.415 1.066A6.72 6.72 0 0112 5.25a6.75 6.75 0 014.163 11.53c.12.1.226.173.315.242a.75.75 0 00.978-1.123 8.22 8.22 0 00-2.212-2.428A6.75 6.75 0 0112 12.75a6.72 6.72 0 01-5.25-2.007.75.75 0 00-.415-1.066.75.75 0 00-.563-.133C1.753 10.215 1.5 11.006 1.5 12.75 1.5 17.513 5.237 21 9.75 21h.75a.75.75 0 00.75-.75V18a.75.75 0 01.75-.75h1.5a.75.75 0 01.75.75v2.25a.75.75 0 00.75.75h.75z" clip-rule="evenodd"></path></svg>
-            <span>Support</span>
-        </a>
-        <a href="account.html" class="bottom-nav-link" aria-label="Profile">
-            <svg class="icon-24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd"></path></svg>
-            <span>Profile</span>
-        </a>
-    </nav>
+    
     
     <script src="data.js"></script>
     <script src="script.js"></script>

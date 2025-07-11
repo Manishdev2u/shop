@@ -147,3 +147,28 @@ function renderMobilePurchaseBar(product) {
         handleBuyNowClick(product.id);
     });
 }
+
+// In js/products-page.js, inside the renderFilteredProducts function
+
+productsToRender.forEach((p, i) => {
+    // --- THIS IS THE SAME NEW LOGIC ---
+    const productUrl = p.custom_url ? p.custom_url : `product.html?id=${p.id}`;
+
+    const productCard = document.createElement('a');
+    productCard.href = productUrl;
+    productCard.className = 'product-card';
+    productCard.style.animationDelay = `${i * 30}ms`;
+    productCard.innerHTML = `
+        <div class="product-card-glow"></div>
+        <span class="product-badge">${p.badge_text || 'Featured'}</span>
+        <div class="product-image-wrapper"><img src="${p.image}" alt="${p.name}" class="product-image"></div>
+        <div class="product-info">
+            <h3 class="product-title">${p.name}</h3>
+            <div class="product-footer">
+                <span class="product-price">₹${p.price.toLocaleString('en-IN')}</span>
+                <div class="btn-buy-now">View</div>
+            </div>
+        </div>
+    `;
+    productGrid.appendChild(productCard);
+});

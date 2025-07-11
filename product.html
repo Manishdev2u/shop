@@ -16,49 +16,98 @@
 </head>
 <body>
 
-    <!-- ========================================================== -->
+  <!-- ========================================================== -->
 <!--  MASTER HEADER - USE THIS ON ALL PAGES -->
 <!-- ========================================================== -->
 <header class="header">
     <div class="container header-container">
-        <a href="index.html" class="logo">Flow</a>
+        <a href="index.html" class="logo">MNHDevTip</a>
         <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="products.html">Products</a>
-            <a href="#about">About</a>
-            <a href="admin/product-creator.html">Admin</a>
+            <a href="support.html">Support</a>
         </nav>
         <div class="header-right">
             <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
     <!-- The icon will be injected here by JavaScript -->
 </button>
-           
+            
+            <!-- These two divs are toggled by JavaScript -->
+            <div id="auth-buttons" class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+            </div>
+            <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
+            
+<!-- === FIND THIS EMPTY BUTTON in your header... === -->
+<!-- <button id="mobile-menu-btn" class="header-icon-btn mobile-menu-btn" aria-label="Open menu">
+    <img src="https://img.icons8.com/m_outlined/512/FFFFFF/menu.png" alt="Menu Icon">
+</button> -->
+
+
+<!-- === ...AND REPLACE IT WITH THIS NEW, COMPLETE VERSION === -->
+<button id="mobile-menu-btn" class="header-icon-btn mobile-menu-btn" aria-label="Open menu">
+    <img src="https://img.icons8.com/m_outlined/512/FFFFFF/menu.png" alt="Menu Icon">
+</button>
+<!-- === END OF REPLACEMENT === -->        </div>
     </div>
 </header>
 
 <!-- ========================================================== -->
-<!--  MASTER MOBILE SIDE NAVIGATION - USE THIS ON ALL PAGES     -->
+<!--  EXCEPTIONALLY ATTRACTIVE MOBILE NAVIGATION (V5)           -->
 <!-- ========================================================== -->
 <div id="mobile-nav" class="mobile-nav-overlay">
-    <button id="mobile-close-btn" class="mobile-close-btn">×</button>
-    <nav class="mobile-nav-links">
-        <a href="index.html" style="--stagger: 1;">Home</a>
-        <a href="products.html" style="--stagger: 2;">Products</a>
-        <a href="#about" style="--stagger: 3;">About</a>
-        
-        <!-- This div shows when logged OUT -->
-        <div id="mobile-auth-links" class="mobile-auth-actions" style="--stagger: 4;">
-            <a href="login.html" class="btn btn-secondary">Login</a>
-            <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+    <!-- The animated background effect -->
+    <div class="auth-bg-aurora">
+        <div class="aurora-shape-1"></div>
+        <div class="aurora-shape-2"></div>
+    </div>
+    
+    <div class="mobile-nav-content">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="logo">Flow</a>
+            <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">×</button>
         </div>
         
-        <!-- This div shows when logged IN -->
-        <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none; --stagger: 4;">
-             <a href="account.html" class="btn btn-primary">My Account</a>
-             <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+        <nav class="mobile-nav-links">
+            <!-- Main Navigation Group -->
+            <div class="nav-group">
+                <a href="index.html" class="nav-link-mobile" style="--stagger: 1;">Home</a>
+                <a href="products.html" class="nav-link-mobile" style="--stagger: 2;">Products</a>
+                <a href="support.html" class="nav-link-mobile" style="--stagger: 3;">Support</a>
+            </div>
+            
+            <hr class="nav-divider">
+
+            <!-- Legal Links Group -->
+            <div class="nav-group">
+                <a href="privacy-policy.html" class="nav-link-mobile secondary" style="--stagger: 4;">Privacy Policy</a>
+                <a href="Terms-and-Conditions.html" class="nav-link-mobile secondary" style="--stagger: 5;">Terms & Conditions</a>
+                <a href="disclaimer.html" class="nav-link-mobile secondary" style="--stagger: 6;">Disclaimer</a>
+                <a href="refund-policy.html" class="nav-link-mobile secondary" style="--stagger: 7;">Refund Policy</a>
+            </div>
+        </nav>
+
+        <div class="mobile-nav-footer">
+            <div class="mobile-social-links">
+                <a href="#" aria-label="Twitter"><!-- Twitter SVG --></a>
+                <a href="#" aria-label="Instagram"><!-- Instagram SVG --></a>
+                <a href="#" aria-label="GitHub"><!-- GitHub SVG --></a>
+            </div>
+            <!-- Logged OUT state -->
+            <div id="mobile-auth-links" class="mobile-auth-actions">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="login.html?mode=signup" class="btn btn-primary">Create Account</a>
+            </div>
+            <!-- Logged IN state -->
+            <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none;">
+                 <a href="account.html" class="btn btn-primary">My Account</a>
+                 <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+            </div>
         </div>
-    </nav>
+    </div>
 </div>
+
 
     <main>
         <div class="container" id="product-detail-container">
@@ -88,6 +137,7 @@
 
     <!-- All the necessary scripts for this page -->
     <script src="data.js"></script>
+     <script src="script.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="product-page.js"></script>

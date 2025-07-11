@@ -531,3 +531,216 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
 }
 
 
+/*
+=====================================================
+  CORRECTED STYLES FOR PERFECTLY ALIGNED BOTTOM NAV ICONS
+=====================================================
+*/
+
+.bottom-nav-link {
+    display: flex;
+    flex-direction: column;
+    /* This is the key: it ensures everything is centered vertically */
+    justify-content: center; 
+    align-items: center;
+    gap: 0.25rem;
+    
+    /* This makes sure each link takes up equal space */
+    flex: 1; 
+    
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+    padding: 0.25rem 0; /* Add some vertical padding */
+}
+
+.nav-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: flex; /* This is also key for centering the image inside */
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* The rest of your existing hover and active styles are perfect and do not need to change */
+[data-theme="dark"] .nav-icon-wrapper img {
+    filter: grayscale(1) brightness(0.7) contrast(1.2);
+}
+
+.bottom-nav-link.active .nav-icon-wrapper img,
+.bottom-nav-link:hover .nav-icon-wrapper img {
+    opacity: 1;
+    filter: none;
+}
+
+.bottom-nav-link.active span {
+    color: var(--primary-color);
+}
+
+.bottom-nav-link:hover span {
+    color: var(--text-primary);
+}
+
+/*
+=====================================================
+  EXCEPTIONALLY ATTRACTIVE MOBILE NAVIGATION (V5)
+=====================================================
+*/
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Background aurora effect */
+    background-color: var(--bg-color-support, #0D1117);
+    overflow: hidden;
+    z-index: 100;
+
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+}
+.mobile-nav-overlay.open {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+/* Reusing the aurora from your other pages */
+.mobile-nav-overlay .auth-bg-aurora {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; opacity: 0.5;
+}
+
+.mobile-nav-content {
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+
+    /* The Glassmorphism Effect */
+    background: color-mix(in srgb, var(--surface-color) 15%, transparent);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.mobile-close-btn {
+    background: none; border: none; font-size: 2.5rem;
+    color: var(--text-primary); cursor: pointer; line-height: 1;
+}
+
+.mobile-nav-links {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 2rem;
+}
+
+.nav-group {
+    padding: 0.5rem 0;
+}
+.nav-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    border: none;
+    margin: 1rem 0;
+}
+
+/* Polished Navigation Links with Pill Highlight */
+.nav-link-mobile {
+    display: block;
+    color: var(--text-secondary); /* Inactive links are secondary color */
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px; /* Pill shape */
+    transition: background-color 0.25s, color 0.25s;
+    
+    opacity: 0;
+    transform: translateY(15px);
+}
+.mobile-nav-overlay.open .nav-link-mobile {
+    animation: slide-up-fade 0.4s ease-out forwards;
+    animation-delay: calc(var(--stagger, 0) * 60ms + 250ms);
+}
+@keyframes slide-up-fade {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.nav-link-mobile.secondary {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.nav-link-mobile:hover {
+    color: var(--text-primary);
+}
+.nav-link-mobile.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Footer Section */
+.mobile-nav-footer {
+    flex-shrink: 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+.mobile-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.mobile-auth-actions, .mobile-account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/*
+=====================================================
+  STYLING FOR THE MOBILE MENU "HAMBURGER" ICON
+=====================================================
+*/
+
+.mobile-menu-btn img {
+    width: 24px; /* Or your preferred size */
+    height: 24px;
+}
+
+/* This rule hides the hamburger button on desktop screens */
+@media (min-width: 992px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+}
+
+/* This rule shows the hamburger button on mobile screens */
+@media (max-width: 991px) {
+    .main-nav, .header .auth-buttons, .header #account-link {
+        display: none; /* Make sure desktop links are hidden */
+    }
+    .mobile-menu-btn {
+        display: flex; /* Make sure the button is visible */
+    }
+}

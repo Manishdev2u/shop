@@ -3,17 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Dashboard - ManishDevTip</title>
+    <title>Privacy Policy - Flow Digital</title>
+    <meta name="description" content="Read the privacy policy for Flow Digital to understand how we collect, use, and protect your personal data.">
     
-    <!-- Fonts and Stylesheets -->
+    <!-- Fonts and Main Stylesheet -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="account-page.css">
+
+    <!-- CSS is embedded directly in this file -->
+    <style>
+        /*
+        =====================================================
+          STYLES FOR THE PRIVACY POLICY PAGE
+        =====================================================
+        */
+        .policy-main {
+            padding: 2rem 0 4rem;
+        }
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        .policy-header {
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .policy-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .policy-header p {
+            color: var(--text-secondary);
+        }
+
+        .policy-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .policy-content p, .policy-content li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .policy-content ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+        .policy-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .policy-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .policy-content a:hover {
+            text-decoration: underline;
+        }
+        .policy-contact-info {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .policy-container {
+                padding: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-     <!-- ========================================================== -->
+
+    <!-- ========================================================== -->
 <!--  MASTER HEADER - USE THIS ON ALL PAGES -->
 <!-- ========================================================== -->
 <header class="header">
@@ -62,7 +140,7 @@
     
     <div class="mobile-nav-content">
         <div class="mobile-nav-header">
-            <a href="index.html" class="logo">ManishDevTip</a>
+            <a href="index.html" class="logo">Flow</a>
             <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">×</button>
         </div>
         
@@ -106,7 +184,7 @@
 </div>
 
 <!-- ========================================================== -->
-<!--  PERFECTED MOBILE BOTTOM NAVIGATION (Products Page Version) -->
+<!--  MASTER MOBILE BOTTOM NAVIGATION BAR                       -->
 <!-- ========================================================== -->
 <nav class="bottom-nav">
     <a href="index.html" class="bottom-nav-link" aria-label="Home">
@@ -127,9 +205,7 @@
         </div>
         <span>Support</span>
     </a>
-        <!-- The "active" class is on this link for the products page -->
-
-    <a href="account.html" class="bottom-nav-link active" aria-label="Profile">
+    <a href="account.html" class="bottom-nav-link" aria-label="Profile">
         <div class="nav-icon-wrapper">
             <img src="https://img.icons8.com/?&id=H101gtpJBVoh&format=png&color=FFFFFF" alt="Profile Icon">
         </div>
@@ -137,61 +213,71 @@
     </a>
 </nav>
 
+    <main class="policy-main">
+        <div class="policy-container">
+            <div class="policy-header">
+                <h1>🔒 Privacy Policy</h1>
+                <p><strong>Effective Date:</strong> July 1, 2025</p>
+                <p><strong>Website:</strong> <a href="https://manishdevtip.shop" target="_blank" rel="noopener noreferrer">https://manishdevtip.shop</a></p>
+            </div>
 
-    <main class="account-main">
-        <div class="container">
-            <div id="page-loader" class="page-loader"><div class="spinner"></div><p>Loading Your Dashboard...</p></div>
+            <div class="policy-content">
+                <p>At ManishDevTips, your privacy is our priority. This Privacy Policy explains how we collect, use, and protect your personal data when you use our website.</p>
 
-            <div id="account-content" class="dashboard-grid-v2" style="display: none;">
-                
-                <aside class="dashboard-sidebar-v2">
-                    <div class="profile-summary">
-                        <div class="profile-avatar" id="avatar-upload-trigger" title="Click to change avatar">
-                            <svg class="avatar-progress-ring" width="86" height="86"><circle class="progress-ring-track" stroke-width="3" fill="transparent" r="40" cx="43" cy="43"/><circle class="progress-ring-circle" stroke-width="3" fill="transparent" r="40" cx="43" cy="43"/></svg>
-                            <img id="user-avatar-img" src="assets/default-avatar.png" alt="User Avatar">
-                        </div>
-                        <input type="file" id="avatar-file-input" accept="image/*" style="display:none;">
-                        <h2 id="user-name" class="profile-name">Loading...</h2>
-                        <p id="user-email" class="profile-email">loading@email.com</p>
-                    </div>
-                    <nav class="dashboard-nav">
-                        <a href="#" class="nav-item active" data-tab="dashboard"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M5.25 3A2.25 2.25 0 003 5.25v9.5A2.25 2.25 0 005.25 17h9.5A2.25 2.25 0 0017 14.75v-9.5A2.25 2.25 0 0014.75 3h-9.5zM8.5 6a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5a.75.75 0 01.75-.75zM11.5 8a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75z"/></svg><span>Dashboard</span></a>
-                        <a href="#" class="nav-item" data-tab="downloads"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path d="M10.75 2.75a.75.75 0 00-1.5 0v8.614L6.295 8.235a.75.75 0 10-1.09 1.03l4.25 4.5a.75.75 0 001.09 0l4.25-4.5a.75.75 0 00-1.09-1.03L10.75 11.364V2.75z" /><path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" /></svg><span>My Downloads</span></a>
-                        <a href="#" class="nav-item" data-tab="history"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clip-rule="evenodd" /></svg><span>Order History</span></a>
-                        <a href="#" class="nav-item" data-tab="settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20"><path fill-rule="evenodd" d="M11.078 2.25c-.217-.065-.434-.1-.662-.134a1.75 1.75 0 00-1.76 1.76c0 .228.035.445.1.662A8.22 8.22 0 002.25 11.078c.065.217.1.434.134.662a1.75 1.75 0 001.76 1.76c.228 0 .445-.035.662-.1a8.22 8.22 0 007.016 7.016c.217.065.434.1.662.134a1.75 1.75 0 001.76-1.76c0-.228-.035-.445-.1-.662A8.22 8.22 0 0017.75 8.922c-.065-.217-.1-.434-.134-.662a1.75 1.75 0 00-1.76-1.76c-.228 0-.445.035-.662.1A8.22 8.22 0 008.922 2.25zM15.25 10a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" clip-rule="evenodd" /></svg><span>Settings</span></a>
-                    </nav>
-                    <div class="sidebar-footer">
-                        <button id="sidebar-logout-btn" class="btn btn-secondary btn-full">Logout</button>
-                    </div>
-                </aside>
+                <h2>1. Information We Collect</h2>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li><strong>Personal Details:</strong> Name, email address, and any information you provide during checkout or contact.</li>
+                    <li><strong>Purchase Information:</strong> Details of digital products purchased, download history, and payment status.</li>
+                    <li><strong>Technical Data:</strong> Browser type, IP address, device type, and operating system.</li>
+                    <li><strong>Usage Behavior:</strong> Pages visited, clicks, time spent on the site, and referring websites.</li>
+                </ul>
 
-                <div class="dashboard-main-content">
-                    <div id="tab-content">
-                        <div class="tab-panel active" id="dashboard-panel">
-                            <div class="welcome-header"><h1>Welcome back, <span id="welcome-user-name">User</span>!</h1><p>Here's a quick overview of your account.</p></div>
-                            <div class="stats-grid">
-                                <div class="stat-card"><div class="stat-value" id="stat-total-purchased">0</div><div class="stat-label">Products Purchased</div></div>
-                                <div class="stat-card"><div class="stat-value" id="stat-member-since">--</div><div class="stat-label">Member Since</div></div>
-                            </div>
-                        </div>
-                        <div class="tab-panel" id="downloads-panel"><h2 class="section-title">My Downloads</h2><div id="orders-grid" class="orders-grid"></div></div>
-                        <div class="tab-panel" id="settings-panel">
-                             <h2 class="section-title">Account Settings</h2>
-                             <div class="settings-card"><h3>Profile Information</h3><form id="name-update-form" class="settings-form"><div class="input-group-glass"><label for="setting-name">Full Name</label><input type="text" id="setting-name"></div><button type="submit" class="btn btn-primary">Update Name</button></form></div>
-                             <div class="settings-card"><h3>Password</h3><div class="setting-item"><p class="setting-desc">Click the button to send a password reset link to your email.</p><button id="change-password-btn" class="btn btn-secondary">Send Reset Link</button></div></div>
-                             <div class="settings-card danger-zone"><h3>Danger Zone</h3><div class="setting-item"><p class="setting-desc">Deleting your account is permanent and will remove all your data.</p><button id="delete-account-btn" class="btn-danger">Delete My Account</button></div></div>
-                             <p id="settings-message" class="settings-message"></p>
-                        </div>
-                        <div class="tab-panel" id="history-panel">
-                             <h2 class="section-title">Order History</h2><div class="order-history-table"><table><thead><tr><th>Order ID</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody id="order-history-body"></tbody></table></div>
-                        </div>
-                    </div>
+                <h2>2. How We Use Your Information</h2>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Deliver your purchased products</li>
+                    <li>Send important updates and order confirmations</li>
+                    <li>Respond to customer support requests</li>
+                    <li>Improve our services and website functionality</li>
+                    <li>Prevent fraudulent activity and ensure data security</li>
+                </ul>
+
+                <h2>3. Payment and Security</h2>
+                <p>We do not store your full payment details. All transactions are handled securely through trusted third-party providers like Razorpay, UPI, or PayPal. Payment data is encrypted and processed through these platforms only.</p>
+
+                <h2>4. Data Sharing</h2>
+                <p>We do not sell, rent, or trade your personal information. We only share your data with trusted partners when necessary to process payments or provide services (e.g., hosting, analytics).</p>
+
+                <h2>5. Cookies and Analytics</h2>
+                <p>We use cookies and tools like Google Analytics to understand how users interact with our website. You can disable cookies in your browser settings if you prefer.</p>
+
+                <h2>6. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Request access to your personal data</li>
+                    <li>Ask us to correct or delete your data</li>
+                    <li>Withdraw consent to use your data at any time</li>
+                </ul>
+                <p>To exercise these rights, contact us at: <a href="mailto:support@manishdevtip.shop">support@manishdevtip.shop</a></p>
+
+                <h2>7. Data Retention</h2>
+                <p>We keep your data only as long as necessary to fulfill your order, comply with legal requirements, or improve our services.</p>
+
+                <h2>8. Policy Updates</h2>
+                <p>We may update this policy from time to time. Any changes will be posted here with a new “Effective Date.”</p>
+
+                <h2>9. Contact Us</h2>
+                <p>For any privacy-related questions or concerns, please contact:</p>
+                <div class="policy-contact-info">
+                    <p>📧 <strong>Email:</strong> <a href="mailto:support@manishdevtip.shop">support@manishdevtip.shop</a></p>
+                    <p style="margin-bottom: 0;">🌐 <strong>Website:</strong> <a href="https://manishdevtip.shop" target="_blank" rel="noopener noreferrer">https://manishdevtip.shop</a></p>
                 </div>
             </div>
         </div>
     </main>
-    
-<!-- ========================================================== -->
+
+   <!-- ========================================================== -->
 <!--  MASTER FOOTER - USE THIS ON ALL PAGES -->
 <!-- ========================================================== -->
 <footer id="about" class="footer">
@@ -264,12 +350,11 @@
     </div>
 </footer>
     
+    
+   <!-- At the bottom of your new page (e.g., Terms-and-Conditions.html) -->
 
-    <script src="data.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
-    <script src="account.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="script.js"></script> 
 </body>
 </html>

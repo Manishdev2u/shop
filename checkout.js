@@ -162,3 +162,99 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start the process
     renderCheckout();
 });
+
+// ==========================================================
+//  FINAL & CORRECTED - js/checkout.js
+//  (This version handles ₹0 products correctly)
+// ==========================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Get Product Info & DOM Elements ---
+    const productId = new URLSearchParams(window.location.search).get('id');
+    const product = products.find(p => p.id == productId);
+
+    const pageLoader = document.getElementById('page-loader');
+    const checkoutContent = document.getElementById('checkout-content');
+    const orderItemContainer = document.getElementById('order-item-container');
+    const payButton = document.getElementById('proceed-to-checkout-btn');
+    
+    // --- (Your other element selectors for coupons, etc. can remain here) ---
+
+    if (!product) {
+        // ... (handle product not found)
+        return;
+    }
+
+    // --- Initial Render (No changes needed here) ---
+    function renderCheckout() {
+        // ... (your existing renderCheckout function)
+    }
+
+    // --- "Pay Now" / "Get for Free" Button Logic ---
+    payButton.addEventListener('click', () => {
+        
+        // ====================================================
+        //  THIS IS THE NEW, SMART LOGIC
+        // ====================================================
+        if (product.price === 0) {
+            // --- HANDLE FREE PRODUCT ---
+            
+            // 1. Show immediate feedback
+            alert('Success! Your free product has been added to your account.');
+            
+            // 2. Automatically save the purchase to localStorage
+            let userPurchases = JSON.parse(localStorage.getItem('userPurchases')) || [];
+            userPurchases.push({
+                productId: product.id,
+                purchaseDate: new Date().toISOString(),
+                finalPrice: 0,
+                couponUsed: 'N/A'
+            });
+            localStorage.setItem('userPurchases', JSON.stringify(userPurchases));
+
+            // 3. Redirect directly to the account page
+            window.location.href = 'account.html';
+
+        } else {
+            // --- HANDLE PAID PRODUCT (The existing Razorpay logic) ---
+            const customerName = document.getElementById('full-name').value;
+            const customerEmail = document.getElementById('email').value;
+
+            if (!customerName || !customerEmail) {
+                alert('Please fill in your name and email address.');
+                return;
+            }
+
+            const options = {
+                "key": "YOUR_RAZORPAY_KEY_ID",
+                "amount": Math.round(product.price * 100), // Use the actual product price
+                "currency": "INR",
+                "name": "Flow Digital",
+                "description": `Purchase of ${product.name}`,
+                "handler": function (response) {
+                    let userPurchases = JSON.parse(localStorage.getItem('userPurchases')) || [];
+                    userPurchases.push({
+                        productId: product.id,
+                        purchaseDate: new Date().toISOString(),
+                        finalPrice: product.price,
+                        couponUsed: 'None' // You can add your coupon logic back here if needed
+                    });
+                    localStorage.setItem('userPurchases', JSON.stringify(userPurchases));
+                    alert('Payment successful!');
+                    window.location.href = 'account.html';
+                },
+                "prefill": {
+                    "name": customerName,
+                    "email": customerEmail,
+                    "contact": document.getElementById('phone').value
+                }
+            };
+            const rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+    });
+
+    renderCheckout();
+});
+
+// --- Your other functions like updatePriceSummary can remain if you still need coupons ---

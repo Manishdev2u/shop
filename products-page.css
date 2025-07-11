@@ -131,3 +131,60 @@
     }
 }
 
+/*
+=====================================================
+  CORRECTED STYLES FOR PERFECTLY ALIGNED BOTTOM NAV ICONS
+=====================================================
+*/
+
+.bottom-nav-link {
+    display: flex;
+    flex-direction: column;
+    /* This is the key: it ensures everything is centered vertically */
+    justify-content: center; 
+    align-items: center;
+    gap: 0.25rem;
+    
+    /* This makes sure each link takes up equal space */
+    flex: 1; 
+    
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+    padding: 0.25rem 0; /* Add some vertical padding */
+}
+
+.nav-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: flex; /* This is also key for centering the image inside */
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* The rest of your existing hover and active styles are perfect and do not need to change */
+[data-theme="dark"] .nav-icon-wrapper img {
+    filter: grayscale(1) brightness(0.7) contrast(1.2);
+}
+
+.bottom-nav-link.active .nav-icon-wrapper img,
+.bottom-nav-link:hover .nav-icon-wrapper img {
+    opacity: 1;
+    filter: none;
+}
+
+.bottom-nav-link.active span {
+    color: var(--primary-color);
+}
+
+.bottom-nav-link:hover span {
+    color: var(--text-primary);
+}
