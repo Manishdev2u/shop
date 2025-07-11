@@ -89,11 +89,11 @@
 <!-- ========================================================== -->
 <header class="header">
     <div class="container header-container">
-        <a href="index.html" class="logo">MNHDevTip</a>
+        <a href="/" class="logo">MNHDevTip</a>
         <nav class="main-nav">
-            <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="support.html">Support</a>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <a href="/support">Support</a>
         </nav>
         <div class="header-right">
             <button id="theme-toggle" class="header-icon-btn" aria-label="Toggle theme">
@@ -102,10 +102,10 @@
             
             <!-- These two divs are toggled by JavaScript -->
             <div id="auth-buttons" class="auth-buttons">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <a href="login.html?mode=signup" class="btn btn-primary">Sign Up</a>
+                <a href="/login" class="btn btn-secondary">Login</a>
+                <a href="/login?mode=signup" class="btn btn-primary">Sign Up</a>
             </div>
-            <a href="account.html" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
+            <a href="/account" id="account-link" class="btn btn-primary" style="display: none;">My Account</a>
             
 <!-- === FIND THIS EMPTY BUTTON in your header... === -->
 <!-- <button id="mobile-menu-btn" class="header-icon-btn mobile-menu-btn" aria-label="Open menu">
@@ -122,83 +122,82 @@
 </header>
 
 <!-- ========================================================== -->
-<!--  EXCEPTIONALLY ATTRACTIVE MOBILE NAVIGATION (V5)           -->
+<!-- EXCEPTIONALLY ATTRACTIVE MOBILE NAVIGATION (V5) -->
 <!-- ========================================================== -->
 <div id="mobile-nav" class="mobile-nav-overlay">
-    <!-- The animated background effect -->
-    <div class="auth-bg-aurora">
-        <div class="aurora-shape-1"></div>
-        <div class="aurora-shape-2"></div>
-    </div>
-    
-    <div class="mobile-nav-content">
-        <div class="mobile-nav-header">
-            <a href="index.html" class="logo">ManishDevTips</a>
-            <button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">×</button>
-        </div>
-        
-        <nav class="mobile-nav-links">
-            <!-- Main Navigation Group -->
-            <div class="nav-group">
-                <a href="index.html" class="nav-link-mobile" style="--stagger: 1;">Home</a>
-                <a href="products.html" class="nav-link-mobile" style="--stagger: 2;">Products</a>
-                <a href="support.html" class="nav-link-mobile" style="--stagger: 3;">Support</a>
-            </div>
-            
-            <hr class="nav-divider">
-
-            <!-- Legal Links Group -->
-            <div class="nav-group">
-                <a href="privacy-policy.html" class="nav-link-mobile secondary" style="--stagger: 4;">Privacy Policy</a>
-                <a href="Terms-and-Conditions.html" class="nav-link-mobile secondary" style="--stagger: 5;">Terms & Conditions</a>
-                <a href="disclaimer.html" class="nav-link-mobile secondary" style="--stagger: 6;">Disclaimer</a>
-                <a href="refund-policy.html" class="nav-link-mobile secondary" style="--stagger: 7;">Refund Policy</a>
-            </div>
-        </nav>
-
-        <div class="mobile-nav-footer">
-            <div class="mobile-social-links">
-                <a href="#" aria-label="Twitter"><!-- Twitter SVG --></a>
-                <a href="#" aria-label="Instagram"><!-- Instagram SVG --></a>
-                <a href="#" aria-label="GitHub"><!-- GitHub SVG --></a>
-            </div>
-            <!-- Logged OUT state -->
-            <div id="mobile-auth-links" class="mobile-auth-actions">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <a href="login.html?mode=signup" class="btn btn-primary">Create Account</a>
-            </div>
-            <!-- Logged IN state -->
-            <div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none;">
-                 <a href="account.html" class="btn btn-primary">My Account</a>
-                 <a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
-            </div>
-        </div>
-    </div>
+<!-- The animated background effect -->
+<div class="auth-bg-aurora">
+<div class="aurora-shape-1"></div>
+<div class="aurora-shape-2"></div>
 </div>
 
+<div class="mobile-nav-content">
+<div class="mobile-nav-header">
+<a href="/" class="logo">ManishDevTips</a>
+<button id="mobile-close-btn" class="mobile-close-btn" aria-label="Close menu">×</button>
+</div>
+
+<nav class="mobile-nav-links">
+<!-- Main Navigation Group -->
+<div class="nav-group">
+<a href="/" class="nav-link-mobile" style="--stagger: 1;">Home</a>
+<a href="/products" class="nav-link-mobile" style="--stagger: 2;">Products</a>
+<a href="/support" class="nav-link-mobile" style="--stagger: 3;">Support</a>
+</div>
+
+<hr class="nav-divider">
+
+<!-- Legal Links Group -->
+<div class="nav-group">
+<a href="/privacy-policy" class="nav-link-mobile secondary" style="--stagger: 4;">Privacy Policy</a>
+<a href="/Terms-and-Conditions" class="nav-link-mobile secondary" style="--stagger: 5;">Terms & Conditions</a>
+<a href="/disclaimer" class="nav-link-mobile secondary" style="--stagger: 6;">Disclaimer</a>
+<a href="/refund-policy" class="nav-link-mobile secondary" style="--stagger: 7;">Refund Policy</a>
+</div>
+</nav>
+
+<div class="mobile-nav-footer">
+<div class="mobile-social-links">
+<a href="#" aria-label="Twitter"><!-- Twitter SVG --></a>
+<a href="#" aria-label="Instagram"><!-- Instagram SVG --></a>
+<a href="#" aria-label="GitHub"><!-- GitHub SVG --></a>
+</div>
+<!-- Logged OUT state -->
+<div id="mobile-auth-links" class="mobile-auth-actions">
+<a href="/login" class="btn btn-secondary">Login</a>
+<a href="/login?mode=signup" class="btn btn-primary">Create Account</a>
+</div>
+<!-- Logged IN state -->
+<div id="mobile-account-link-wrapper" class="mobile-account-actions" style="display:none;">
+<a href="/account" class="btn btn-primary">My Account</a>
+<a href="#" id="mobile-logout-btn" class="btn btn-secondary">Logout</a>
+</div>
+</div>
+</div>
+</div>
 <!-- ========================================================== -->
 <!--  MASTER MOBILE BOTTOM NAVIGATION BAR                       -->
 <!-- ========================================================== -->
 <nav class="bottom-nav">
-    <a href="index.html" class="bottom-nav-link" aria-label="Home">
+    <a href="/" class="bottom-nav-link" aria-label="Home">
         <div class="nav-icon-wrapper">
             <img src="https://img.icons8.com/?&id=2797&format=png&color=FFFFFF" alt="Home Icon">
         </div>
         <span>Home</span>
     </a>
-    <a href="products.html" class="bottom-nav-link" aria-label="Products">
+    <a href="/products" class="bottom-nav-link" aria-label="Products">
         <div class="nav-icon-wrapper">
             <img src="https://img.icons8.com/?id=EPIY1Za1GacU&format=png&color=FFFFFF" alt="Products Icon">
         </div>
         <span>Products</span>
     </a>
-    <a href="support.html" class="bottom-nav-link" aria-label="Support">
+    <a href="/support" class="bottom-nav-link" aria-label="Support">
          <div class="nav-icon-wrapper">
             <img src="https://img.icons8.com/?&id=11267&format=png&color=FFFFFF" alt="Support Icon">
         </div>
         <span>Support</span>
     </a>
-    <a href="account.html" class="bottom-nav-link" aria-label="Profile">
+    <a href="/account" class="bottom-nav-link" aria-label="Profile">
         <div class="nav-icon-wrapper">
             <img src="https://img.icons8.com/?&id=H101gtpJBVoh&format=png&color=FFFFFF" alt="Profile Icon">
         </div>
@@ -254,7 +253,7 @@
         <div class="footer-content">
             <!-- Column 1: Brand & Newsletter -->
             <div class="footer-column footer-brand-column">
-                <a href="index.html" class="logo">ManishDevTips</a>
+                <a href="/" class="logo">ManishDevTips</a>
                 <p class="footer-tagline">Premium digital assets to supercharge your creativity.</p>
                 <form id="newsletter-form" class="newsletter-form">
                     <label for="newsletter-email">Stay Updated</label>
@@ -274,7 +273,7 @@
                     <li><a href="#">UI Kits</a></li>
                     <li><a href="#">Templates</a></li>
                     <li><a href="#">Icons</a></li>
-                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="/products">All Products</a></li>
                 </ul>
             </div>
 
