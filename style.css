@@ -744,3 +744,46 @@ body { font-family: var(--font-family); background-color: var(--bg-color); color
         display: flex; /* Make sure the button is visible */
     }
 }
+
+
+
+
+*
+=====================================================
+  DEFINITIVE FIX: HIDE HEADER BUTTONS ON MOBILE (V3)
+=====================================================
+*/
+
+/* 
+  By default, we allow the buttons to exist, letting the
+  JavaScript control them. This works for the side-nav.
+*/
+
+/* 
+  However, on mobile screens (anything below 768px wide),
+  we will FORCE the buttons inside the main header to be hidden,
+  no matter what the JavaScript says.
+*/
+@media (max-width: 767px) {
+    .header .auth-buttons,
+    .header #account-link {
+        display: none !important;
+    }
+}
+
+
+/* 
+  On desktop screens (768px and wider), we ensure the buttons
+  are visible again, respecting the JavaScript's logic.
+*/
+@media (min-width: 768px) {
+    /* This rule shows the LOGIN/SIGNUP buttons when they should be visible */
+    .header #auth-buttons[style*="display: flex"] {
+        display: flex !important;
+    }
+    
+    /* This rule shows the MY ACCOUNT button when it should be visible */
+    .header #account-link[style*="display: flex"] {
+        display: flex !important;
+    }
+}
